@@ -11,12 +11,13 @@ public class Project{
     private int id;
     private String name;
     private Manager manager;
-    private List<Employee> Employees = new ArrayList<>();
+    private List<Employee> employees = new ArrayList<>();
     private Customer customer;
     private List<Task> tasks = new ArrayList<>();
 
-    public Project(String name){
+    public Project(String name, int id){
         this.name = name;
+        this.id = id;
     }
 
     
@@ -42,10 +43,10 @@ public class Project{
     }
 
     public List<Employee> getEmployees() {
-        return Employees;
+        return employees;
     }
-    public void setEmployees(List<Employee> employees) {
-        Employees = employees;
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
     }
 
     public Customer getCustomer() {

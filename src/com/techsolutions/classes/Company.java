@@ -29,23 +29,32 @@ public class Company{
     public String getName() {
         return name;
     }
-    
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    public void createProject(String name){
+        int id = projects.size() + 1;
+        projects.add(new Project(name, id));
+    }
     public List<Project> getProjects() {
         return projects;
     }
+    public Project getProjectByID(int id){
+        for(Project project: projects){
+            if(project.getId() == id){
+                return project;
+            }
+        }
+        return null;
+    }
+    // public void setProjects(List<Project> projects) {
+    //     this.projects = projects;
+    // }
 
-// public void setProjects(List<Project> projects) {
-//     this.projects = projects;
-// }
-    
     public List<Customer> getCustomers() {
         return customers;
     }
-
     public void addCustomer(Customer customer) {
         customers.add(customer);
     }
@@ -53,7 +62,6 @@ public class Company{
     public List<Manager> getManagers() {
         return managers;
     }
-
     // public void setManagers(List<Manager> managers) {
     //     this.managers = managers;
     // }
@@ -61,13 +69,8 @@ public class Company{
     public List<Employee> getEmployees() {
         return employees;
     }
-
     // public void setEmployees(List<Employee> employees) {
     //     this.employees = employees;
     // }
-
-    public void createProject(String name){
-        projects.add(new Project(name));
-    }
 
 }
