@@ -46,9 +46,9 @@ public class Company{
         return customers;
     }
 
-    // public void setCustomers(List<Customer> customers) {
-    //     this.customers = customers;
-    // }
+    public void addCustomer(Customer customer) {
+        customers.add(customer);
+    }
 
     public List<Manager> getManagers() {
         return managers;
@@ -65,5 +65,9 @@ public class Company{
     // public void setEmployees(List<Employee> employees) {
     //     this.employees = employees;
     // }
+
+    public void createProject(String name){
+        projects.add(new Project(name));
+    }
 
 }
