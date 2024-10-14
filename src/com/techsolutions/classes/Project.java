@@ -62,4 +62,18 @@ public class Project{
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
+
+    public void addTask(String taskName) {
+        int taskId = tasks.size() + 1;
+        Task newTask = new Task(taskId, taskName);
+        tasks.add(newTask);
+        System.out.println("Tarea '" + taskName + "' creada en el proyecto '" + name + "'.");
+    }
+
+    public void showProjectSummary() {
+        System.out.println("Resumen del proyecto: " + name);
+        for (Task task : tasks) {
+            System.out.println("Tarea ID: " + task.getId() + ", Nombre: " + task.getName() + ", Estado: " + task.getStatus());
+        }
+    }
 }

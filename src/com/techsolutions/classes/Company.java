@@ -10,13 +10,17 @@ import people.Manager;
 public class Company{
     private static Company instance;
     private String name;
-    private List<Project> projects = new ArrayList<>();
-    private List<Customer> customers = new ArrayList<>();
-    private List<Manager> managers = new ArrayList<>();
-    private List<Employee> employees = new ArrayList<>();
+    private List<Project> projects;
+    private List<Customer> customers;
+    private List<Manager> managers;
+    private List<Employee> employees;
 
 
     private Company(){
+        this.projects = new ArrayList<>();
+        this.customers = new ArrayList<>();
+        this.managers = new ArrayList<>();
+        this.employees = new ArrayList<>();
     }
 
     public static Company getInstance(){
