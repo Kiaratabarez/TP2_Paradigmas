@@ -28,16 +28,14 @@ public class app {
         System.out.println("Bienvenido al sistema de la empresa " + company.getName());
 
         while (true) {
-            System.out.println("\n==========================");
+            System.out.println("\n=============================");
             System.out.println("Seleccione una opcion");
+            System.out.println("1 - Gestionar proyectos");
+            System.out.println("2 - Gestionar clientes");
+            System.out.println("3 - Gestionar empleados");
             System.out.println("0 - Salir");
-            System.out.println("1 - Crear nuevo proyecto");
-            System.out.println("2 - Mostrar los proyectos");
-            System.out.println("3 - Agregar nuevo cliente");
-            System.out.println("4 - Listar clientes");
-            System.out.println("5 - Crear nueva tarea");
-            System.out.println("6 - Mostrar resumen del proyecto");
-            System.out.println("==========================");
+            System.out.println("=============================");
+
 
             int selection;
             try {
@@ -49,7 +47,7 @@ public class app {
                 continue;
             }
 
-            switch (selection) {
+            switch(selection){
                 case 0:
                     System.out.println("Saliendo del sistema...");
                     input.close();

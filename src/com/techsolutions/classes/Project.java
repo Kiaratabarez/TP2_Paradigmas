@@ -20,7 +20,6 @@ public class Project{
         this.id = id;
     }
 
-    
     public int getId() {
         return id;
     }
