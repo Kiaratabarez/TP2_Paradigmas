@@ -18,8 +18,9 @@ public class SubMenuGestionTareas {
         System.out.println("=============================");
         System.out.println("1 - Crear nueva tarea");
         System.out.println("2 - Listar tareas");
-        System.out.println("3 - Asignar tarea a un empleado");
-        System.out.println("4 - Ver empleados de una tarea");
+        System.out.println("3 - Cambiar estado de tarea");
+        System.out.println("4 - Asignar tarea a un empleado");
+        System.out.println("5 - Ver empleados de una tarea");
         System.out.println("0 - Atrás");
 
         int selection = 0;
@@ -43,11 +44,41 @@ public class SubMenuGestionTareas {
                 System.out.println("Listando todas las tareas de" + project.getName() + ":\n");
                 for (Task task : project.getTasks()){
                     System.out.println("\nNombre: " + task.getName() + " | ID: " + task.getId() +
-                    "\nCantidad de empleados: " + task.getEmployees().size());
+                    "\nCantidad de empleados: " + task.getEmployees().size() + " Estado: " + task.getStatus());
                 }
                 break;
             }
             case 3:{
+                for (Task task : project.getTasks()){
+                    System.out.println("\nNombre: " + task.getName() + " | ID: " + task.getId() +
+                    "\nEstado: " + task.getStatus());
+                }
+                System.out.println("Ingrese ID de tarea: ");
+                int id_Task = input.nextInt();
+                input.nextLine();
+                Task task = project.getTaskByID(id_Task);
+                System.out.println("Nuevo estado para tarea " + task.getName() +
+                "\n1.PENDIENTE" +
+                "\n2.EN CURSO" +
+                "\n3.FINALIZADA");
+                int newStatus = input.nextInt();
+                switch (newStatus) {
+                    case 1:
+                        task.changeStatus("PENDIENTE");
+                        break;
+                    case 2:
+                        task.changeStatus("EN CURSO");
+                        break;
+                    case 3:
+                        task.changeStatus("FINALIZADA");
+                        break;
+                    default:
+                    System.out.println("Valor ingresado inválido");
+                        break;
+                }
+                break;
+            }
+            case 4:{
                 for (Task task : project.getTasks()){
                     System.out.println("\nNombre: " + task.getName() + " | ID: " + task.getId());
                 }
@@ -68,7 +99,7 @@ public class SubMenuGestionTareas {
                 System.out.println("Se ha asignado la tarea " + task.getName() + " al empleado " + employee.getName());
                 break;
             }
-            case 4:{
+            case 5:{
                 for (Task task : project.getTasks()){
                     System.out.println("\nNombre: " + task.getName() + " | ID: " + task.getId());
                 }
