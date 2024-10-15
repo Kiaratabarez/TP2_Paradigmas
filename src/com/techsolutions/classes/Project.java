@@ -73,6 +73,7 @@ public class Project{
         int taskId = tasks.size() + 1;
         Task newTask = new Task(taskId, taskName);
         tasks.add(newTask);
+        newTask.setProject(this);
         System.out.println("Tarea '" + taskName + "' creada en el proyecto '" + name + "'.");
     }
     public Task getTaskByID(int id){

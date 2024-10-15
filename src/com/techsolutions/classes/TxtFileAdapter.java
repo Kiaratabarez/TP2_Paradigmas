@@ -4,8 +4,6 @@ package classes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import classes.Company;
-import classes.Project;
 import people.Employee;
 import people.EmployeeFactory;
 

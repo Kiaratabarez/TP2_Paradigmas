@@ -1,6 +1,5 @@
 package classes;
 
-import classes.Task;
 import people.Employee;
 
 public class DirectAssignmentStrategy implements TaskAssignmentStrategy {

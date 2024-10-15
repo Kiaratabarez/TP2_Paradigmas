@@ -7,13 +7,24 @@ public class Task {
     private int id;
     private String name;
     private String status;
-    private List<Employee> Employees;
+    private Project project;
+    private List<Employee> employees;
+    private TaskAssignmentStrategy assignmentStrategy;
 
     public Task(int id, String name) {
         this.id = id;
         this.name = name;
-        this.status = "Pendiente";
-        this.Employees = new ArrayList<>();
+        this.status = "PENDIENTE";
+        this.employees = new ArrayList<>();
+        
+    }
+
+    public void assignEmployee(Employee employee) {
+        assignmentStrategy.assignTask(this, employee);
+    }
+
+    public void setAssignmentStrategy(TaskAssignmentStrategy strategy) {
+        this.assignmentStrategy = strategy;
     }
 
     public void changeStatus(String newStatus) {
@@ -22,7 +33,7 @@ public class Task {
     }
 
     public void addEmployee(Employee employee) {
-        Employees.add(employee);
+        employees.add(employee);
         // notifyEmployee(employee);
     }
 
@@ -40,5 +51,7 @@ public class Task {
     public int getId() { return id; }
     public String getName() { return name; }
     public String getStatus() { return status; }
-    public List<Employee> getEmployees() { return Employees; }
+    public List<Employee> getEmployees() { return employees; }
+    public Project getProject() { return project; }
+    public void setProject(Project project) { this.project = project; }
 }
