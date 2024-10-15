@@ -5,6 +5,8 @@ import people.Customer;
 import people.Employee;
 import people.EmployeeFactory;
 import classes.Task;
+import classes.TxtFileAdapter;
+import menu.MenuGestionProyectos;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -13,6 +15,9 @@ public class app {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         Company company = Company.getInstance();
+
+        // Company company = adapter.readCompanyData();
+        // TxtFileAdapter adapter = new TxtFileAdapter("ruta_del_archivo.txt");
 
         company.setName("Twice Entertainment");
         company.createProject("Comer sandía");
@@ -53,9 +58,7 @@ public class app {
                     input.close();
                     return;
                 case 1:
-                    System.out.println("Nombre del nuevo proyecto:");
-                    String projectName = input.nextLine();
-                    company.createProject(projectName);
+                    MenuGestionProyectos.start();
                     break;
                 case 2:
                     System.out.println("Listando todos los proyectos:\n");
