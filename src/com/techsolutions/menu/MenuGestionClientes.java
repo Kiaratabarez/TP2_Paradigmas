@@ -6,7 +6,6 @@ import java.util.Scanner;
 import classes.Company;
 import classes.Project;
 import people.Customer;
-import people.Employee;
 
 public class MenuGestionClientes{
     static Scanner input = new Scanner(System.in);

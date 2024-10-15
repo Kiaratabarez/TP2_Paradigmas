@@ -3,10 +3,10 @@ package menu;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import classes.Company;
+import classes.DirectAssignmentStrategy;
 import classes.Project;
+import classes.RandomAssignmentStrategy;
 import classes.Task;
-import people.Customer;
 import people.Employee;
 
 public class SubMenuGestionTareas {
@@ -38,6 +38,7 @@ public class SubMenuGestionTareas {
                 System.out.println("Nombre de nueva tarea:");
                 String taskName = input.nextLine();
                 project.addTask(taskName);
+                
                 break;
             }
             case 2:{
@@ -79,6 +80,7 @@ public class SubMenuGestionTareas {
                 break;
             }
             case 4:{
+                
                 for (Task task : project.getTasks()){
                     System.out.println("\nNombre: " + task.getName() + " | ID: " + task.getId());
                 }
@@ -86,6 +88,27 @@ public class SubMenuGestionTareas {
                 int id_Task = input.nextInt();
                 input.nextLine();
                 Task task = project.getTaskByID(id_Task);
+
+                System.out.println("Seleccione método de asignación: ");
+                System.out.println("1. Asignación directa");
+                System.out.println("2. Asignación aleatoria");
+                int assignmentMethod = input.nextInt();
+                input.nextLine();
+                    switch (assignmentMethod) {
+                        case 1:
+                            task.setAssignmentStrategy(new DirectAssignmentStrategy());
+                            break;
+                        case 2:
+                            task.setAssignmentStrategy(new RandomAssignmentStrategy());
+                            task.assignEmployee(null);
+                            return;
+                        default:
+                            System.out.println("Método de asignación no válido. Se usará asignación directa por defecto.");
+                            task.setAssignmentStrategy(new DirectAssignmentStrategy());
+                            break;
+                    }
+                
+                
                 System.out.println("Asignar tarea " + task.getName() + " al empleado");
 
                 for (Employee employee : project.getEmployees()) {
@@ -94,9 +117,7 @@ public class SubMenuGestionTareas {
                 System.out.println("Ingrese DNI de empleado: ");
                 String dni_Employee = input.nextLine();
                 Employee employee = project.getEmployeeByDNI(dni_Employee);
-                task.addEmployee(employee);
-                employee.addTask(task);
-                System.out.println("Se ha asignado la tarea " + task.getName() + " al empleado " + employee.getName());
+                task.assignEmployee(employee);
                 break;
             }
             case 5:{

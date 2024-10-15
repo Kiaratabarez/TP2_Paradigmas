@@ -3,24 +3,41 @@ import people.Employee;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Task {
+public class Task implements Subject{
     private int id;
     private String name;
     private String status;
     private Project project;
     private List<Employee> employees;
     private TaskAssignmentStrategy assignmentStrategy;
+    private List<Observer> observers;
 
     public Task(int id, String name) {
         this.id = id;
         this.name = name;
         this.status = "PENDIENTE";
         this.employees = new ArrayList<>();
-        
+        this.observers = new ArrayList<>();
+    }
+
+
+    public void attach(Observer observer) {
+        observers.add(observer);
+    }
+
+    public void detach(Observer observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyEmployees() {
+        for (Observer observer : observers) {
+            observer.update(name, status);
+        }
     }
 
     public void assignEmployee(Employee employee) {
         assignmentStrategy.assignTask(this, employee);
+        attach(employee);
     }
 
     public void setAssignmentStrategy(TaskAssignmentStrategy strategy) {
@@ -29,25 +46,13 @@ public class Task {
 
     public void changeStatus(String newStatus) {
         this.status = newStatus;
-        // notifyEmployees();
+        notifyEmployees();
     }
 
     public void addEmployee(Employee employee) {
         employees.add(employee);
-        // notifyEmployee(employee);
     }
 
-    // private void notifyEmployee(Employee employee) {
-    //     System.out.println("Notificando a " + employee.getName() + ": la tarea '" + name + "' ha sido asignada.");
-    // }
-
-    // private void notifyEmployees() {
-    //     for (Employee employee : assignedEmployees) {
-    //         System.out.println("Notificando a " + employee.getName() + ": el estado de la tarea '" + name + "' ha cambiado a " + status + ".");
-    //     }
-    // }
-
-    // Getters y Setters
     public int getId() { return id; }
     public String getName() { return name; }
     public String getStatus() { return status; }

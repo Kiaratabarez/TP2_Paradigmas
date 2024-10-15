@@ -1,11 +1,7 @@
 import classes.Company;
-import classes.Project;
-import people.Developer;
-import people.Customer;
 import people.Employee;
 import people.EmployeeFactory;
-import classes.Task;
-import classes.TxtFileAdapter;
+
 import menu.MenuGestionClientes;
 import menu.MenuGestionEmpleados;
 import menu.MenuGestionProyectos;
@@ -71,9 +67,6 @@ public class app {
                     break;
                 case 3:
                     MenuGestionEmpleados.start();
-                    ///////////////////////////////////////////////////////
-                    /// ARREGLAR SOUT DE EXITO, PONER DENTRO DE FUNCION ///
-                    ///////////////////////////////////////////////////////
                     break;
                 case 4:
 

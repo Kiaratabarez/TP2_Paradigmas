@@ -5,7 +5,6 @@ import java.util.Scanner;
 
 import classes.Company;
 import classes.Project;
-import people.Customer;
 import people.Employee;
 import people.EmployeeFactory;
 import people.Manager;
