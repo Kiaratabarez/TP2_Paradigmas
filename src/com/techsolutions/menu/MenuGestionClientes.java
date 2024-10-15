@@ -6,6 +6,7 @@ import java.util.Scanner;
 import classes.Company;
 import classes.Project;
 import people.Customer;
+import people.Employee;
 
 public class MenuGestionClientes{
     static Scanner input = new Scanner(System.in);
@@ -15,8 +16,9 @@ public class MenuGestionClientes{
         System.out.println("////Gestión de clientes////");
         System.out.println("=============================");
         System.out.println("1 - Agregar nuevo cliente");
-        System.out.println("2 - Listar clientes");
-        System.out.println("3 - Mostrar datos de un cliente");
+        System.out.println("2 - Asignar cliente a proyecto");
+        System.out.println("3 - Listar clientes");
+        System.out.println("4 - Mostrar datos de un cliente");
         System.out.println("0 - Atrás");
 
         int selection = 0;
@@ -30,7 +32,7 @@ public class MenuGestionClientes{
                 switch(selection) {
             case 0:
                 break;
-            case 1:
+            case 1:{
                 System.out.println("Nombre del cliente:");
                 String name = input.nextLine();
                 System.out.println("DNI:");
@@ -43,14 +45,37 @@ public class MenuGestionClientes{
                 Company.getInstance().addCustomer(newCustomer);
                 System.out.println("Cliente " + name + " creado.");
                 break;
-            case 2:
+            }
+            case 2:{
+                for (Customer customer : Company.getInstance().getCustomers()) {
+                    System.out.println("Nombre: " + customer.getName()  + " | DNI: " + customer.getDni());
+                }
+                System.out.println("Ingrese DNI del cliente: ");
+                String dni_Customer = input.nextLine();
+                Customer customer = Company.getInstance().getCustomerByDNI(dni_Customer);
+                System.out.println("Asignar al cliente " + customer.getName() + " al proyecto");
+
+                for (Project project : Company.getInstance().getProjects()) {
+                    System.out.println("Nombre: " + project.getName() + " | ID: " + project.getId());
+                }
+                System.out.println("Ingrese ID de proyecto: ");
+                int id_Project = input.nextInt();
+                input.nextLine();
+                Project project = Company.getInstance().getProjectByID(id_Project);
+                project.setCustomer(customer);
+                customer.setProject(project);
+                System.out.println("Se ha asignado a " + customer.getName() + " al proyecto " + project.getName());
+                break;
+            }
+            case 3:{
                 System.out.println("Listando todos los clientes:\n");
                 for (Customer customer : Company.getInstance().getCustomers()) {
                     String projectName = (customer.getProject() != null) ? customer.getProject().getName() : "No asignado";
                     System.out.println("Nombre: " + customer.getName()  + " | Proyecto: " + projectName);
                 }
                 break;
-            case 3:
+            }
+            case 4:{
                 for (Customer customer : Company.getInstance().getCustomers()) {
                     System.out.println("Nombre: " + customer.getName()  + " | DNI: " + customer.getDni());
                 }
@@ -62,6 +87,7 @@ public class MenuGestionClientes{
                 System.out.println("DNI:" + customer.getDni() + " | Proyecto: " + projectName);
                 System.out.println("Telefono: " + customer.getPhone() + " | Email: " + customer.getEmail());
                 break;
+            }
             default:
                 System.out.println("Valor incorrecto");
                 break;
