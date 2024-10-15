@@ -30,6 +30,7 @@ public class Company{
         return instance;
     }
 
+
     public String getName() {
         return name;
     }
@@ -52,29 +53,46 @@ public class Company{
         }
         return null;
     }
-    // public void setProjects(List<Project> projects) {
-    //     this.projects = projects;
-    // }
 
-    public List<Customer> getCustomers() {
-        return customers;
-    }
+
     public void addCustomer(Customer customer) {
         customers.add(customer);
     }
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+    public Customer getCustomerByDNI(String dni){
+        for(Customer customer: customers){
+            if(customer.getDni().equals(dni)){
+                return customer;
+            }
+        }
+        return null;
+    }
 
-    public List<Manager> getManagers() {
+
+    public void addManager(Manager manager) {
+        managers.add(manager);
+    }
+    public List<Manager> getManagers(){
         return managers;
     }
-    // public void setManagers(List<Manager> managers) {
-    //     this.managers = managers;
-    // }
 
-    public List<Employee> getEmployees() {
+
+    public List<Employee> getEmployees(){
         return employees;
     }
-    // public void setEmployees(List<Employee> employees) {
-    //     this.employees = employees;
-    // }
+    public void addEmployee(Employee employee){
+        employees.add(employee);
+    }
 
+    public int getSizeManagers(){
+        return managers.size();
+    }
+    public int getSizeCustomers(){
+        return customers.size();
+    }
+    public int getSizeEmployees(){
+        return employees.size();
+    }
 }

@@ -29,7 +29,6 @@ public class MenuGestionProyectos{
         }
         switch(selection) {
             case 0:
-                input.close();
                 break;
             case 1:
                 System.out.println("Nombre del nuevo proyecto:");

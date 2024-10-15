@@ -11,11 +11,12 @@ public class Person{
     private Project project;
 
 
-    public Person(String name, String dni, String phone, String email) {
+    public Person(String name, String dni, String phone, String email, int id) {
         this.name = name;
         this.dni = dni;
         this.phone = phone;
         this.email = email;
+        this.id = id;
     }
 
 

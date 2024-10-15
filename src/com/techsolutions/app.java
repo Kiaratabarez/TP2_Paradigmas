@@ -6,6 +6,7 @@ import people.Employee;
 import people.EmployeeFactory;
 import classes.Task;
 import classes.TxtFileAdapter;
+import menu.MenuGestionClientes;
 import menu.MenuGestionProyectos;
 
 import java.util.InputMismatchException;
@@ -26,9 +27,13 @@ public class app {
 
         // Crear empleados
         Employee empleado1 = EmployeeFactory.createEmployee("Francisco", "46237591", "3764", "fbagneres@gmail.com", "Developer");
-        Employee empleado2 = EmployeeFactory.createEmployee("Romina", "123456", "12345678", "romina@gmail.com", "Developer");
+        Employee empleado2 = EmployeeFactory.createEmployee("Romina", "123456", "12345678", "romina@gmail.com", "Tester");
         company.getProjectByID(1).addEmployee(empleado1);
         company.getProjectByID(1).addEmployee(empleado2);
+
+
+        System.out.println(empleado1.getClass());
+        System.out.println(empleado2.getClass());
 
         System.out.println("Bienvenido al sistema de la empresa " + company.getName());
 
@@ -61,29 +66,13 @@ public class app {
                     MenuGestionProyectos.start();
                     break;
                 case 2:
-                    System.out.println("Listando todos los proyectos:\n");
-                    for (Project project : company.getProjects()) {
-                        System.out.println("Nombre: " + project.getName() + " ID: " + project.getId());
-                    }
+                    MenuGestionClientes.start();
                     break;
                 case 3:
-                    System.out.println("Nombre del cliente:");
-                    String name = input.nextLine();
-                    System.out.println("DNI:");
-                    String dni = input.nextLine();
-                    System.out.println("Número de teléfono:");
-                    String phone = input.nextLine();
-                    System.out.println("Email:");
-                    String email = input.nextLine();
-                    Customer newCustomer = new Customer(name, dni, phone, email);
-                    company.addCustomer(newCustomer);
-                    System.out.println("Cliente " + name + " creado.");
+
                     break;
                 case 4:
-                    System.out.println("Listando todos los clientes:\n");
-                    for (Customer customer : company.getCustomers()) {
-                        System.out.println("Nombre: " + customer.getName());
-                    }
+
                     break;
                 case 5:
                     System.out.println("ID del proyecto para crear la tarea:");

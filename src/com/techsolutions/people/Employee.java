@@ -10,8 +10,8 @@ public abstract class Employee extends Person{
     private List<Task> tasks;
     // private TaskAssignmentStrategy taskAssignmentStrategy;
 
-    public Employee(String name, String dni, String phone, String email){
-        super(name, dni, phone, email);
+    public Employee(String name, String dni, String phone, String email, int id){
+        super(name, dni, phone, email, id);
         this.tasks = new ArrayList<>();
     }
     
