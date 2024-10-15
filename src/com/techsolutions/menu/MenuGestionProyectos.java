@@ -30,12 +30,13 @@ public class MenuGestionProyectos{
         switch(selection) {
             case 0:
                 break;
-            case 1:
+            case 1:{
                 System.out.println("Nombre del nuevo proyecto:");
                 String projectName = input.nextLine();
                 Company.getInstance().createProject(projectName);
                 break;
-            case 2:
+            }
+            case 2:{
                 System.out.println("Listando todos los proyectos:\n");
                 for (Project project : Company.getInstance().getProjects()) {
                     String customerName = (project.getCustomer() != null) ? project.getCustomer().getName() : "No asignado";
@@ -44,7 +45,8 @@ public class MenuGestionProyectos{
                     "\nCliente: " + customerName + " | Gerente: " + managerName);
                 }
                 break;
-            case 3:
+            }
+            case 3:{
                 for (Project project : Company.getInstance().getProjects()) {
                     System.out.println("Nombre: " + project.getName() + " | ID: " + project.getId());
                 }
@@ -59,9 +61,18 @@ public class MenuGestionProyectos{
                 System.out.println("Cliente: " + customerName + " | Gerente: " + managerName);
                 System.out.println("Cantidad de tareas: " + project.getTasks().size());
                 break;
-            case 4:
-                //AGREGAR MENU DE GESTIÓN DE TAREAS
+            }
+            case 4:{
+                for (Project project : Company.getInstance().getProjects()) {
+                    System.out.println("Nombre: " + project.getName() + " | ID: " + project.getId());
+                }
+                System.out.println("Ingrese ID de proyecto: ");
+                int id_Project = input.nextInt();
+                input.nextLine();
+                Project project = Company.getInstance().getProjectByID(id_Project);
+                SubMenuGestionTareas.start(project);
                 break;
+            }
             default:
                 System.out.println("Valor incorrecto");
                 break;

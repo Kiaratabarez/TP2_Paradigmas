@@ -7,6 +7,7 @@ import people.EmployeeFactory;
 import classes.Task;
 import classes.TxtFileAdapter;
 import menu.MenuGestionClientes;
+import menu.MenuGestionEmpleados;
 import menu.MenuGestionProyectos;
 
 import java.util.InputMismatchException;
@@ -69,7 +70,10 @@ public class app {
                     MenuGestionClientes.start();
                     break;
                 case 3:
-
+                    MenuGestionEmpleados.start();
+                    ///////////////////////////////////////////////////////
+                    /// ARREGLAR SOUT DE EXITO, PONER DENTRO DE FUNCION ///
+                    ///////////////////////////////////////////////////////
                     break;
                 case 4:
 

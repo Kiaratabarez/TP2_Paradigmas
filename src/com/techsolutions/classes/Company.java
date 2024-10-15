@@ -77,14 +77,31 @@ public class Company{
     public List<Manager> getManagers(){
         return managers;
     }
-
-
-    public List<Employee> getEmployees(){
-        return employees;
+    public Manager getManagerByDNI(String dni){
+        for(Manager manager: managers){
+            if(manager.getDni().equals(dni)){
+                return manager;
+            }
+        }
+        return null;
     }
+
+
     public void addEmployee(Employee employee){
         employees.add(employee);
     }
+    public List<Employee> getEmployees(){
+        return employees;
+    }
+    public Employee getEmployeeByDNI(String dni){
+        for(Employee employee: employees){
+            if(employee.getDni().equals(dni)){
+                return employee;
+            }
+        }
+        return null;
+    }
+
 
     public int getSizeManagers(){
         return managers.size();

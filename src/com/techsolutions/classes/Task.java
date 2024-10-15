@@ -7,13 +7,13 @@ public class Task {
     private int id;
     private String name;
     private String status;
-    private List<Employee> assignedEmployees;
+    private List<Employee> Employees;
 
     public Task(int id, String name) {
         this.id = id;
         this.name = name;
         this.status = "Pendiente";
-        this.assignedEmployees = new ArrayList<>();
+        this.Employees = new ArrayList<>();
     }
 
     public void changeStatus(String newStatus) {
@@ -22,7 +22,7 @@ public class Task {
     }
 
     public void addEmployee(Employee employee) {
-        assignedEmployees.add(employee);
+        Employees.add(employee);
         // notifyEmployee(employee);
     }
 
@@ -40,4 +40,5 @@ public class Task {
     public int getId() { return id; }
     public String getName() { return name; }
     public String getStatus() { return status; }
+    public List<Employee> getEmployees() { return Employees; }
 }

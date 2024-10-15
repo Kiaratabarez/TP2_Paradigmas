@@ -47,6 +47,14 @@ public class Project{
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
+    public Employee getEmployeeByDNI(String dni){
+        for(Employee employee: employees){
+            if(employee.getDni().equals(dni)){
+                return employee;
+            }
+        }
+        return null;
+    }
 
     public Customer getCustomer() {
         return customer;
@@ -61,12 +69,19 @@ public class Project{
     public void setTasks(List<Task> tasks) {
         this.tasks = tasks;
     }
-
     public void addTask(String taskName) {
         int taskId = tasks.size() + 1;
         Task newTask = new Task(taskId, taskName);
         tasks.add(newTask);
         System.out.println("Tarea '" + taskName + "' creada en el proyecto '" + name + "'.");
+    }
+    public Task getTaskByID(int id){
+        for(Task task: tasks){
+            if(task.getId() == id){
+                return task;
+            }
+        }
+        return null;
     }
 
     public void showProjectSummary() {
