@@ -4,6 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import classes.Company;
+import classes.Project;
 import people.Customer;
 import people.Employee;
 import people.EmployeeFactory;
@@ -62,18 +63,27 @@ public class MenuGestionEmpleados{
                     System.out.println("Nombre: " + employee.getName()  + " | Proyecto: " + projectName);
                 }
                 break;
-            case 3:
-                for (Customer customer : Company.getInstance().getCustomers()) {
-                    System.out.println("Nombre: " + customer.getName()  + " | DNI: " + customer.getDni());
+            case 3:{
+                for (Employee employee : Company.getInstance().getEmployees()) {
+                    System.out.println("Nombre: " + employee.getName()  + " | DNI: " + employee.getDni());
                 }
-                System.out.println("Ingrese DNI de cliente: ");
-                String dni_Customer = input.nextLine();
-                Customer customer = Company.getInstance().getCustomerByDNI(dni_Customer);
-                String projectName = (customer.getProject() != null) ? customer.getProject().getName() : "No asignado";
-                System.out.println("Datos del cliente " + customer.getName());
-                System.out.println("DNI:" + customer.getDni() + " | Proyecto: " + projectName);
-                System.out.println("Telefono: " + customer.getPhone() + " | Email: " + customer.getEmail());
+                System.out.println("Ingrese DNI del empleado: ");
+                String dni_Employeer = input.nextLine();
+                Employee employee = Company.getInstance().getEmployeeByDNI(dni_Employeer);
+                System.out.println("Agregar al empleado " + employee.getName() + " al proyecto");
+
+                for (Project project : Company.getInstance().getProjects()) {
+                    System.out.println("Nombre: " + project.getName() + " | ID: " + project.getId());
+                }
+                System.out.println("Ingrese ID de proyecto: ");
+                int id_Project = input.nextInt();
+                input.nextLine();
+                Project project = Company.getInstance().getProjectByID(id_Project);
+                project.addEmployee(employee);
+                employee.setProject(project);
+                System.out.println("Se ha asignado a " + employee.getName() + " al proyecto " + project.getName());
                 break;
+            }
             case 4:
                 System.out.println("Nombre del gerente:");
                 name = input.nextLine();
@@ -83,7 +93,7 @@ public class MenuGestionEmpleados{
                 phone = input.nextLine();
                 System.out.println("Email:");
                 email = input.nextLine();
-                Company.getInstance().addCustomer(new Customer(name, dni, phone, email, Company.getInstance().getSizeManagers()+1));
+                Company.getInstance().addManager(new Manager(name, dni, phone, email, Company.getInstance().getSizeManagers()+1));
                 System.out.println("Gerente " + name + " creado.");
                 break;
             case 5:
@@ -93,8 +103,27 @@ public class MenuGestionEmpleados{
                     System.out.println("Nombre: " + manager.getName()  + " | Proyecto: " + projectName);
                 }
                 break;
-            case 6:
+            case 6:{
+                for (Manager manager : Company.getInstance().getManagers()) {
+                    System.out.println("Nombre: " + manager.getName()  + " | DNI: " + manager.getDni());
+                }
+                System.out.println("Ingrese DNI del gerente: ");
+                String dni_Manager = input.nextLine();
+                Manager manager = Company.getInstance().getManagerByDNI(dni_Manager);
+                System.out.println("Asignar al gerente " + manager.getName() + " al proyecto");
+
+                for (Project project : Company.getInstance().getProjects()) {
+                    System.out.println("Nombre: " + project.getName() + " | ID: " + project.getId());
+                }
+                System.out.println("Ingrese ID de proyecto: ");
+                int id_Project = input.nextInt();
+                input.nextLine();
+                Project project = Company.getInstance().getProjectByID(id_Project);
+                project.setManager(manager);
+                manager.setProject(project);
+                System.out.println("Se ha asignado a " + manager.getName() + " al proyecto " + project.getName());
                 break;
+            }
             default:
                 System.out.println("Valor incorrecto");
                 break;
