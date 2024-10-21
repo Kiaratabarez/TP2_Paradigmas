@@ -11,7 +11,7 @@ public class RandomAssignmentStrategy implements TaskAssignmentStrategy{
         int max = task.getProject().getEmployees().size();
         int index = random.nextInt(max);
         Employee indexEmployee= task.getProject().getEmployees().get(index);
-        indexEmployee.addTask(task);
+        indexEmployee.addMyTask(task);
         task.addEmployee(indexEmployee);
         System.out.println("La tarea '" + task.getName() + "' ha sido asignada de forma aleatoria a " + indexEmployee.getName());
     }

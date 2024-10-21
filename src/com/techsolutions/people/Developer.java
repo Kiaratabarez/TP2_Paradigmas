@@ -6,6 +6,12 @@ public class Developer extends Employee{
         super(name, dni, phone, email, id);
     }
     
+    @Override
     public void trabajar(){
     }
+
+    /////////////////////////////
+    //   TERMINAR DE PONER TRABAJAR PARA CADA EPLEADOS
+    /////////////////////////////
+
 }

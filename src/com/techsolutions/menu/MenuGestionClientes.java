@@ -28,9 +28,9 @@ public class MenuGestionClientes{
             System.out.println("Por favor, ingrese un número valido.");
             input.nextLine();
         }
-                switch(selection) {
+        switch(selection) {
             case 0:
-                break;
+                return;
             case 1:{
                 System.out.println("Nombre del cliente:");
                 String name = input.nextLine();
@@ -43,7 +43,8 @@ public class MenuGestionClientes{
                 Customer newCustomer = new Customer(name, dni, phone, email, Company.getInstance().getSizeCustomers()+1);
                 Company.getInstance().addCustomer(newCustomer);
                 System.out.println("Cliente " + name + " creado.");
-                break;
+                start();
+                return;
             }
             case 2:{
                 for (Customer customer : Company.getInstance().getCustomers()) {
@@ -64,7 +65,8 @@ public class MenuGestionClientes{
                 project.setCustomer(customer);
                 customer.setProject(project);
                 System.out.println("Se ha asignado a " + customer.getName() + " al proyecto " + project.getName());
-                break;
+                start();
+                return;
             }
             case 3:{
                 System.out.println("Listando todos los clientes:\n");
@@ -72,7 +74,8 @@ public class MenuGestionClientes{
                     String projectName = (customer.getProject() != null) ? customer.getProject().getName() : "No asignado";
                     System.out.println("Nombre: " + customer.getName()  + " | Proyecto: " + projectName);
                 }
-                break;
+                start();
+                return;
             }
             case 4:{
                 for (Customer customer : Company.getInstance().getCustomers()) {
@@ -85,11 +88,14 @@ public class MenuGestionClientes{
                 System.out.println("Datos del cliente " + customer.getName());
                 System.out.println("DNI:" + customer.getDni() + " | Proyecto: " + projectName);
                 System.out.println("Telefono: " + customer.getPhone() + " | Email: " + customer.getEmail());
-                break;
+                start();
+                return;
             }
             default:
                 System.out.println("Valor incorrecto");
-                break;
+                start();
+                return;
+
         }
     }
 }

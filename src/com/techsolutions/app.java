@@ -5,6 +5,7 @@ import people.EmployeeFactory;
 import menu.MenuGestionClientes;
 import menu.MenuGestionEmpleados;
 import menu.MenuGestionProyectos;
+import menu.Clear;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -67,23 +68,6 @@ public class app {
                     break;
                 case 3:
                     MenuGestionEmpleados.start();
-                    break;
-                case 4:
-
-                    break;
-                case 5:
-                    System.out.println("ID del proyecto para crear la tarea:");
-                    int projectId = input.nextInt();
-                    input.nextLine();
-                    System.out.println("Nombre de la tarea:");
-                    String taskName = input.nextLine();
-                    company.getProjectByID(projectId).addTask(taskName);
-                    break;
-                case 6:
-                    System.out.println("ID del proyecto para mostrar resumen:");
-                    int projectSummaryId = input.nextInt();
-                    input.nextLine();
-                    company.getProjectByID(projectSummaryId).showProjectSummary();
                     break;
                 default:
                     System.out.println("Valor inválido.");

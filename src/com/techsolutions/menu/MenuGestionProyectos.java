@@ -29,12 +29,13 @@ public class MenuGestionProyectos{
         }
         switch(selection) {
             case 0:
-                break;
+                return;
             case 1:{
                 System.out.println("Nombre del nuevo proyecto:");
                 String projectName = input.nextLine();
                 Company.getInstance().createProject(projectName);
-                break;
+                start();
+                return;
             }
             case 2:{
                 System.out.println("Listando todos los proyectos:\n");
@@ -44,7 +45,8 @@ public class MenuGestionProyectos{
                     System.out.println("\nNombre: " + project.getName() + " | ID: " + project.getId() +
                     "\nCliente: " + customerName + " | Gerente: " + managerName);
                 }
-                break;
+                start();
+                return;
             }
             case 3:{
                 for (Project project : Company.getInstance().getProjects()) {
@@ -60,7 +62,8 @@ public class MenuGestionProyectos{
                 System.out.println("ID:" + project.getId() + " | Cantidad de empleados: " + project.getEmployees().size());
                 System.out.println("Cliente: " + customerName + " | Gerente: " + managerName);
                 System.out.println("Cantidad de tareas: " + project.getTasks().size());
-                break;
+                start();
+                return;
             }
             case 4:{
                 for (Project project : Company.getInstance().getProjects()) {
@@ -71,11 +74,13 @@ public class MenuGestionProyectos{
                 input.nextLine();
                 Project project = Company.getInstance().getProjectByID(id_Project);
                 SubMenuGestionTareas.start(project);
-                break;
+                start();
+                return;
             }
             default:
                 System.out.println("Valor incorrecto");
-                break;
+                start();
+                return;
         }
     }
 }

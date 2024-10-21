@@ -6,6 +6,7 @@ public class Designer extends Employee{
         super(name, dni, phone, email, id);
     }
 
+    @Override
     public void trabajar(){
     
     }

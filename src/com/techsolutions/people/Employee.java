@@ -20,7 +20,7 @@ public abstract class Employee extends Person implements Observer{
 
     public List<Task> getTasks() { return tasks; }
 
-    public void addTask(Task task) {
+    public void addMyTask(Task task) {
         tasks.add(task);
     }
 

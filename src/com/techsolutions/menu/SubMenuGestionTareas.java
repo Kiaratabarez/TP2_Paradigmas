@@ -10,7 +10,7 @@ import classes.Task;
 import people.Employee;
 
 public class SubMenuGestionTareas {
-     static Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
     public static void start(Project project){
         System.out.println("=============================");
@@ -33,13 +33,13 @@ public class SubMenuGestionTareas {
         }
         switch(selection) {
             case 0:
-                break;
+                return;
             case 1:{
                 System.out.println("Nombre de nueva tarea:");
                 String taskName = input.nextLine();
                 project.addTask(taskName);
-                
-                break;
+                start(project);
+                return;
             }
             case 2:{
                 System.out.println("Listando todas las tareas de" + project.getName() + ":\n");
@@ -47,7 +47,8 @@ public class SubMenuGestionTareas {
                     System.out.println("\nNombre: " + task.getName() + " | ID: " + task.getId() +
                     "\nCantidad de empleados: " + task.getEmployees().size() + " Estado: " + task.getStatus());
                 }
-                break;
+                start(project);
+                return;
             }
             case 3:{
                 for (Task task : project.getTasks()){
@@ -77,10 +78,10 @@ public class SubMenuGestionTareas {
                     System.out.println("Valor ingresado inválido");
                         break;
                 }
-                break;
+                start(project);
+                return;
             }
             case 4:{
-                
                 for (Task task : project.getTasks()){
                     System.out.println("\nNombre: " + task.getName() + " | ID: " + task.getId());
                 }
@@ -108,7 +109,6 @@ public class SubMenuGestionTareas {
                             break;
                     }
                 
-                
                 System.out.println("Asignar tarea " + task.getName() + " al empleado");
 
                 for (Employee employee : project.getEmployees()) {
@@ -118,7 +118,8 @@ public class SubMenuGestionTareas {
                 String dni_Employee = input.nextLine();
                 Employee employee = project.getEmployeeByDNI(dni_Employee);
                 task.assignEmployee(employee);
-                break;
+                start(project);
+                return;
             }
             case 5:{
                 for (Task task : project.getTasks()){
@@ -132,11 +133,13 @@ public class SubMenuGestionTareas {
                 for (Employee employee : task.getEmployees()){
                     System.out.println("\nNombre: " + employee.getName() + " | Email: " + employee.getEmail());
                 }
-                break;
+                start(project);
+                return;
             }
             default:
                 System.out.println("Valor incorrecto");
-                break;
+                start(project);
+                return;
         }
     }
 }

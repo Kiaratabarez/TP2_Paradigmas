@@ -30,7 +30,6 @@ public class Company{
         return instance;
     }
 
-
     public String getName() {
         return name;
     }

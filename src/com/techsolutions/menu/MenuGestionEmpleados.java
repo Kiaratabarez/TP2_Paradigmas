@@ -40,7 +40,7 @@ public class MenuGestionEmpleados{
         }
         switch(selection) {
             case 0:
-                break;
+                return;
             case 1:
                 System.out.println("Nombre del empleado:");
                 name = input.nextLine();
@@ -54,14 +54,16 @@ public class MenuGestionEmpleados{
                 String rol = input.nextLine();
                 Company.getInstance().addEmployee(EmployeeFactory.createEmployee(name, dni, phone, email, rol));
                 System.out.println("Empleado " + name + " creado.");
-                break;
+                start();
+                return;
             case 2:
                 System.out.println("Listando todos los empleados:\n");
                 for(Employee employee : Company.getInstance().getEmployees()) {
                     projectName = (employee.getProject() != null) ? employee.getProject().getName() : "No asignado";
                     System.out.println("Nombre: " + employee.getName()  + " | Proyecto: " + projectName);
                 }
-                break;
+                start();
+                return;
             case 3:{
                 for (Employee employee : Company.getInstance().getEmployees()) {
                     System.out.println("Nombre: " + employee.getName()  + " | DNI: " + employee.getDni());
@@ -81,7 +83,8 @@ public class MenuGestionEmpleados{
                 project.addEmployee(employee);
                 employee.setProject(project);
                 System.out.println("Se ha asignado a " + employee.getName() + " al proyecto " + project.getName());
-                break;
+                start();
+                return;
             }
             case 4:
                 System.out.println("Nombre del gerente:");
@@ -94,14 +97,16 @@ public class MenuGestionEmpleados{
                 email = input.nextLine();
                 Company.getInstance().addManager(new Manager(name, dni, phone, email, Company.getInstance().getSizeManagers()+1));
                 System.out.println("Gerente " + name + " creado.");
-                break;
+                start();
+                return;
             case 5:
                 System.out.println("Listando todos los gerentes:\n");
                 for(Manager manager : Company.getInstance().getManagers()){
                     projectName = (manager.getProject() != null) ? manager.getProject().getName() : "No asignado";
                     System.out.println("Nombre: " + manager.getName()  + " | Proyecto: " + projectName);
                 }
-                break;
+                start();
+                return;
             case 6:{
                 for (Manager manager : Company.getInstance().getManagers()) {
                     System.out.println("Nombre: " + manager.getName()  + " | DNI: " + manager.getDni());
@@ -121,11 +126,13 @@ public class MenuGestionEmpleados{
                 project.setManager(manager);
                 manager.setProject(project);
                 System.out.println("Se ha asignado a " + manager.getName() + " al proyecto " + project.getName());
-                break;
+                start();
+                return;
             }
             default:
                 System.out.println("Valor incorrecto");
-                break;
+                start();
+                return;
         }
     }
 }

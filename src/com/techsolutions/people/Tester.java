@@ -6,7 +6,8 @@ public class Tester extends Employee{
         super(name, dni, phone, email, id);
     }
 
+    @Override
     public void trabajar(){
-    
+        
     }
 }
